@@ -1,0 +1,35 @@
+Kurulum için gerekenler:
+
+1. XAMPP'in kurulu olması: 
+
+- XAMPP'in en güncel sürümünün bilgisayarınıza yüklü olduğundan ve Apache ile MySQL servislerinin açık olduğundan emin olun.
+- XAMPP’i başlatın.
+- Apache ve MySQL servislerini "Start" butonuna basarak çalıştırın.
+
+2. SQL dosyasını içe aktarma:
+- Tarayıcınızdan "http://localhost/phpmyadmin" adresine gidin.
+- Üst menüden "İçe Aktar" sekmesine tıklayın.
+- "Dosya Seç" butonuna tıklayarak .rar dosyasının içindeki
+"oyun_sitesi.sql" dosyasını seçin.
+- Sayfanın en altına inip "İçe Aktar" butonuna tıklayın ve işlemin tamamlanmasını bekleyin.
+
+3. Site dosyalarını kopyalama:
+- Bilgisayarınızdaki "C:\xampp\htdocs" klasörüne gidin.
+- Size verilen .rar dosyasının içindeki "oyun-sitesi" klasörünü buraya kopyalayın.
+
+5. Kurulumu doğrulama:
+- Tarayıcınızdan "http://localhost/oyun-sitesi/index.php" adresine gidin.
+- Eğer kurulum başarılı olduysa, siteyi burada görebilmelisiniz.
+
+6. Admin Panele Erişim:
+- Admin Panel'e giriş yapmak için, sitenin footerındaki "Admin Giriş" yazısına tıklayın. Giriş bilgileri;
+
+Kullanıcı Adı: melek
+Şifre: 2003
+
+Bunu değiştirmek isterseniz "http://localhost/phpmyadmin/index.php?route=/sql&db=oyun_sitesi&table=admins&pos=0" adresine giderek "Düzenle" butonuna tıklayarak Username ve Password bilgilerini değiştirebilirsiniz. Ya da aynı linke giderek üst menüdeki "Ekle tuşuna basarak istediğiniz Username ve Password bilgilerini girerek admin hesabı oluşturabilirsiniz.
+
+7. Ekstra Notlar:
+
+- Eğer .rar dosyasını çıkartırken bir problem yaşarsanız, dosyayı manuel olarak çıkarıp içeriğini "C:\xampp\htdocs" klasörüne yapıştırabilirsiniz.
+- Eğer site açılmazsa, PHP sürüm uyumluluğu veya dosya izinleri gibi konularda problem olup olmadığını kontrol edin.
