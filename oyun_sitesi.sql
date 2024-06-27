@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 27 Haz 2024, 12:38:41
+-- Üretim Zamanı: 27 Haz 2024, 19:22:55
 -- Sunucu sürümü: 10.4.32-MariaDB
 -- PHP Sürümü: 8.2.12
 
@@ -18,248 +18,43 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Veritabanı: `film_sitesi`
+-- Veritabanı: `oyun_sitesi`
 --
-CREATE DATABASE IF NOT EXISTS `film_sitesi` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `film_sitesi`;
+CREATE DATABASE IF NOT EXISTS `oyun_sitesi` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `oyun_sitesi`;
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `basrol_oyunculari`
+-- Tablo için tablo yapısı `admins`
 --
 
-CREATE TABLE `basrol_oyunculari` (
+CREATE TABLE `admins` (
+  `id` int(6) UNSIGNED NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Tablo döküm verisi `admins`
+--
+
+INSERT INTO `admins` (`id`, `username`, `password`, `created_at`) VALUES
+(1, 'melek', '2003', '2024-06-25 14:53:11');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `destek_kaydi`
+--
+
+CREATE TABLE `destek_kaydi` (
   `id` int(11) NOT NULL,
-  `film_id` int(11) DEFAULT NULL,
-  `oyuncu_adi` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Tablo döküm verisi `basrol_oyunculari`
---
-
-INSERT INTO `basrol_oyunculari` (`id`, `film_id`, `oyuncu_adi`) VALUES
-(92, 55, 'Ahmet Mümtaz Taylan'),
-(93, 55, 'Uğur Yücel'),
-(94, 55, 'Kenan İmirzalıoğlu'),
-(95, 55, 'Nejat İşler'),
-(96, 55, 'Berrak Tüzünataç'),
-(97, 55, 'Ceyda Düvenci'),
-(98, 55, 'İlker Aksum'),
-(99, 56, 'Gökhan Mumcu'),
-(100, 56, 'Shweta Aggarwal'),
-(101, 56, 'Suniel Shetty'),
-(102, 56, 'Haldun Boysan, Kaan Girgin'),
-(103, 57, 'Necati Şaşmaz'),
-(104, 57, 'Gürkan Uygun'),
-(105, 57, 'Kenan Çoban'),
-(106, 57, 'Erhan Ufak'),
-(107, 57, 'Bergüzar Korel'),
-(108, 57, 'Billy Zane'),
-(109, 57, 'Gary Busey'),
-(110, 57, 'Diego Serrano'),
-(111, 57, 'Ghassan Massoud'),
-(112, 58, 'Uğur Arda Başkan (Ayas)'),
-(113, 58, 'Emin Öztürk (Mert)'),
-(114, 58, 'Deniz Hatun Güler (Ayçin)'),
-(115, 58, 'Deniz Baysal (Cücükevi)'),
-(116, 59, 'Enes Batur (Akın)'),
-(117, 59, 'Şerif Sezer (Kamil)'),
-(118, 59, 'Şirin Giobbi (İlayda)'),
-(119, 59, 'Levent Kol (Bücür)'),
-(120, 59, 'Zafer Algöz (Müdür Mümin)'),
-(121, 59, 'Ayşen Gruda (Nene)'),
-(122, 60, 'Uğur Yücel (Şerafettin)'),
-(123, 60, 'Demet Evgar (Misket)'),
-(124, 60, 'Okan Yalabık (Rıza)'),
-(125, 60, 'Güven Kıraç (Tonguç)'),
-(126, 60, 'Gökçe Özyol (Rıfkı)'),
-(127, 60, 'Ahmet Mümtaz Taylan (Kötü Kenan)'),
-(128, 61, 'İsmail Hacıoğlu'),
-(129, 61, 'Kim Seol'),
-(130, 61, 'Çetin Tekindor'),
-(131, 61, 'Lee Kyung-Jin'),
-(132, 61, 'Ali Atay'),
-(133, 61, 'Murat Yıldırım'),
-(134, 62, 'Cemal Hünal'),
-(135, 62, 'Melis Birkan'),
-(136, 62, 'Yıldız Kültür'),
-(137, 62, 'Şerif Bozkurt'),
-(138, 62, 'Gözde Kansu'),
-(139, 62, 'Aslı Aybars'),
-(140, 62, 'Goncagül Sunar'),
-(141, 63, 'Mete Horozoğlu'),
-(142, 63, 'Birce Akalay'),
-(143, 63, 'Engin Baykal'),
-(144, 63, 'Banu Çiçek'),
-(145, 64, 'Şener Şen'),
-(146, 64, 'Uğur Yücel'),
-(147, 64, 'Şermin Hürmeriç'),
-(148, 64, 'Yeşim Salkım'),
-(149, 64, 'Kamuran Usluer'),
-(150, 64, 'Ülkü Duru, Özkan Uğur'),
-(151, 65, 'Altan Erkekli'),
-(152, 65, 'Ahmet Mümtaz Taylan'),
-(153, 65, 'Melisa Sözen'),
-(154, 65, 'Derviş Zaim'),
-(155, 65, 'Serhat Tutumluer'),
-(156, 65, 'Mesut Akusta'),
-(157, 66, 'Kemal Sunal'),
-(158, 66, 'Metin Akpınar'),
-(159, 66, 'Meltem Cumbul'),
-(160, 66, 'Rafet El Roman'),
-(161, 66, 'Ali Sunal'),
-(162, 67, 'Nihan Aypolat'),
-(163, 67, 'Koray Kadirağa'),
-(164, 67, 'Pervin Bağdat'),
-(165, 68, 'Burak Özçivit'),
-(166, 68, 'Biğkem Karavus'),
-(167, 68, 'Kurtuluş'),
-(168, 68, 'Şakirağaoğlu'),
-(169, 68, 'Sedat Kalkavan'),
-(170, 68, 'Selma Kutluğ'),
-(171, 68, 'Meral Koro'),
-(172, 68, 'Ecem Cansu Aktay'),
-(173, 68, 'Celalettin Demirel'),
-(174, 68, 'Sevgi Türker'),
-(175, 69, 'Ayça İnci'),
-(176, 69, 'Cem Kurtoğlu'),
-(177, 69, 'Sefa Zengin'),
-(178, 69, 'Bahtiyar Engin'),
-(179, 69, 'Nazlı Ceren Argon'),
-(180, 69, 'Yıldırım Öcek'),
-(181, 69, 'Hakan Meriçliler'),
-(182, 69, 'Levent Sülün'),
-(183, 70, 'Beren Saat'),
-(184, 70, 'Murat Yıldırım'),
-(185, 70, 'Okan Yalabık'),
-(186, 70, 'Belçim Bilgin'),
-(187, 70, 'Umut Kurt'),
-(188, 71, 'Şener Şen'),
-(189, 71, 'Ferman'),
-(190, 71, 'Cem Yılmaz'),
-(191, 71, 'Çetin Tekindor'),
-(192, 71, 'Battal Çolakzade'),
-(193, 71, 'Melisa Sözen, Okan Yalabık'),
-(194, 72, 'Mehmet Günsür'),
-(195, 72, 'Azra Akın'),
-(196, 72, 'Nejat İşler'),
-(197, 72, 'Güven Kıraç'),
-(198, 72, 'İsmail Hacıoğlu'),
-(199, 72, 'Nurgül Yeşilçay'),
-(200, 73, 'Kemal Sunal'),
-(201, 73, 'Münir Özkul'),
-(202, 73, 'Tarık Akan'),
-(203, 73, 'Halit Akçatepe'),
-(204, 73, 'Adile Naşit'),
-(205, 73, 'Şener Şen'),
-(206, 73, 'Ahmet Arıman'),
-(207, 73, 'Sıtkı Akçatepe'),
-(208, 74, 'Şahan Gökbakar'),
-(209, 74, 'Fatma Toptaş'),
-(210, 74, 'Tuluğ Çizgen'),
-(211, 75, 'Yılmaz Erdoğan'),
-(212, 75, 'Tolga Çevik'),
-(213, 75, 'Özgü Namal'),
-(214, 75, 'Demet Akbağ'),
-(215, 75, 'Altan Erkekli'),
-(216, 75, 'Cem Yılmaz'),
-(217, 76, 'Aytaç Arman'),
-(218, 76, 'Güngör Bayrak'),
-(219, 76, 'Güven Şengil'),
-(220, 76, 'Kamil Sönmez'),
-(221, 76, 'Şevket Altuğ'),
-(222, 76, 'Hasan Ceylan'),
-(223, 77, 'Münir Özkul'),
-(224, 77, 'Adile Naşit'),
-(225, 78, 'Kemal Sunal'),
-(226, 78, 'Müjde Ar'),
-(227, 78, 'Şener Şen'),
-(228, 78, 'Adile Naşit'),
-(229, 78, 'Ayşen Gruda'),
-(230, 78, 'Bilge Zobu'),
-(231, 78, 'Günfer Feray'),
-(232, 79, 'Fahriye Evcen'),
-(233, 79, 'Burak Özçivit'),
-(234, 80, 'Farah Zeynep Abdullah'),
-(235, 80, 'Mehmet Günsür, Kerem Bürsin'),
-(236, 81, 'Özcan Deniz'),
-(237, 81, 'Şebnem Dönmez'),
-(238, 81, 'Haluk Bilginer'),
-(239, 81, 'Demet Akbağ'),
-(240, 81, 'Cem Özer'),
-(241, 81, 'Ata Demirer'),
-(242, 81, 'Murat Akkoyunlu'),
-(243, 81, 'Uğur Uludağ'),
-(244, 82, 'Sedef');
-
--- --------------------------------------------------------
-
---
--- Tablo için tablo yapısı `filmler`
---
-
-CREATE TABLE `filmler` (
-  `film_id` int(11) NOT NULL,
-  `film_adi` varchar(255) NOT NULL,
-  `cikis_tarihi` date NOT NULL,
-  `imdb_puani` decimal(3,1) NOT NULL,
-  `aciklama` text DEFAULT NULL,
-  `basrol_oyunculari` text DEFAULT NULL,
-  `film_suresi` int(11) DEFAULT NULL,
-  `kategori_id` int(11) NOT NULL,
-  `kapak_foto` varchar(255) DEFAULT NULL,
-  `fragman_link` varchar(255) DEFAULT NULL,
-  `izleme_link` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Tablo döküm verisi `filmler`
---
-
-INSERT INTO `filmler` (`film_id`, `film_adi`, `cikis_tarihi`, `imdb_puani`, `aciklama`, `basrol_oyunculari`, `film_suresi`, `kategori_id`, `kapak_foto`, `fragman_link`, `izleme_link`) VALUES
-(55, 'Ejder Kapanı', '2010-01-22', 6.5, 'Şehirdeki tecavüz suçlularını hedef alan bir seri katil ortaya çıkar ve bu durum, İstanbul’da büyük bir korku ve paniğe yol açar. Cinayetleri çözmek için görevlendirilen deneyimli başkomiser Abbas (Uğur Yücel) ve onun genç meslektaşı Akrep Celal (Kenan İmirzalıoğlu), kendilerini karmaşık ve tehlikeli bir kovalamacanın içinde bulurlar.\r\n\r\nCinayetlerin ardındaki gizemi çözmeye çalışırken, dedektifler her kurbanın olay yerine bırakılan gizemli bir ejderha figürüyle karşılaşırlar. Araştırmalar derinleştikçe, Abbas ve Celal, katilin sadece sıradan bir suçlu olmadığını, aksine adalet arayışı içinde olan bir intikamcı olduğunu fark ederler. Bu süreçte, dedektifler kendi içsel çatışmaları ve geçmişleriyle de yüzleşmek zorunda kalırlar.', NULL, 106, 1, '../uploads/Ejder Kapanı.png', 'https://youtu.be/9xQ37XQ8ThQ?si=PIDDph0oAd4r9C1j', 'https://hdfilmcehennemi.cx/ejder-kapani/'),
-(56, 'Miras', '2008-03-14', 5.7, 'Hikaye, ünlü iş insanı Kemal Yılmaz’ın ani ölümünün ardından başlıyor. Kemal Yılmaz’ın vefatı, ardında büyük bir servet ve karmaşık aile ilişkileri bırakır. Mirası devralması beklenen oğulları Murat ve Levent, kendilerini beklenmedik bir mücadelenin içinde bulurlar. Miras, sadece büyük bir serveti değil, aynı zamanda çözülmemiş sırları ve gömülü düşmanlıkları da beraberinde getirir.\r\n\r\nMurat ve Levent, babalarının ölümünün ardındaki gizemi çözmeye çalışırken, tehlikeli bir oyunun içine çekilirler. Babalarının eski ortakları, karanlık güçler ve aile içindeki ihanetler, kardeşleri birbirine düşürmekle kalmaz, aynı zamanda hayatta kalma mücadelesi vermelerine neden olur. Film boyunca Murat ve Levent, hem birbirleriyle hem de dış dünyadaki düşmanlarıyla savaşmak zorunda kalır.', NULL, 93, 1, '../uploads/Miras.png', '-', 'https://www.dailymotion.com/video/x5nun6r'),
-(57, 'Kurtlar Vadisi Irak', '2006-02-03', 5.7, 'Film, Amerikalı askerlerin Türk özel kuvvetlerine düzenlediği bir baskınla başlar. Bu olay, Türk kamuoyunda büyük bir yankı uyandırır ve intikam isteğiyle yanıp tutuşan Polat Alemdar (Necati Şaşmaz) ve ekibini harekete geçirir. Polat Alemdar, vatanseverliği ve kararlılığıyla tanınan bir gizli operatördür. Ekibiyle birlikte Irak’a doğru yola çıkarak, baskından sorumlu Amerikalı komutan Sam William Marshall\'ı (Billy Zane) bulup adaleti sağlamak için tehlikeli bir göreve atılır.\r\n\r\nIrak’ın kaotik ortamında ilerleyen Polat ve ekibi, yerel direnişçilerle iş birliği yaparak adaleti sağlama çabası içine girerler. Film, savaşın ve işgalin insanlık üzerindeki yıkıcı etkilerini çarpıcı bir şekilde gözler önüne sererken, aksiyon dolu sahneleri ve derinlikli karakter analizleriyle dikkat çeker. Polat Alemdar\'ın kararlılığı ve liderliği, izleyicilere unutulmaz bir kahramanlık hikayesi sunar.', NULL, 124, 1, '../uploads/Kurtlar Vadisi Irak.png', 'https://youtu.be/rmsHO9puwD0?si=FPVWh2dxPtlucyJL', 'https://youtu.be/JulvdANGUbI?si=FQinprvejyuAkN3G'),
-(58, 'Ayas', '2013-11-22', 6.0, 'Ayas, anne ve babasıyla birlikte yaşayan, meraklı ve enerjik bir çocuktur. Her gün mahallesinde yeni şeyler keşfeder ve yeni arkadaşlar edinir. En yakın dostları Mert, Ayçin ve Cücükevi ile birlikte, sokakta oynar, sorunları çözer ve birlikte büyümeyi öğrenirler.\r\n\r\nAncak Ayas\'ın hayatı, bir gün mahallesine taşınan yeni bir komşuyla değişir. Bu komşu, Ayas\'ın hayatına farklı bir renk katar ve ona yeni şeyler öğretir. Ayas ve arkadaşları, bu yeni macerada dostluklarını, cesaretlerini ve paylaşmayı öğrenirler.', NULL, 82, 2, '../uploads/Ayas.png', 'https://youtu.be/XKE9hGH5oYo?si=8H30p-INjc0QmxbX', 'https://fullhdfilm.pro/ayas-izle/'),
-(59, 'Rafadan Tayfa Dehliz Macerası', '2018-10-26', 6.3, 'Filmin hikayesi, Rafadan Tayfa\'nın lideri Akın, en yakın arkadaşı Kamil ve diğer üyeleriyle birlikte, mahallelerinin eski ve gizemli dehlizlerini keşfetmeleriyle başlar. Dehlizlerin derinliklerine doğru ilerleyen çocuklar, bilinmeyen tehlikelerle karşılaşırken, aynı zamanda değerli bir hazineyi bulma umuduyla heyecan dolu bir maceraya atılırlar.\r\n\r\nAncak hazine peşindeki tek grup onlar değildir. Rakip ekip ve kötü niyetli karakterler de hazineyi ele geçirmek için peşlerine düşer. Rafadan Tayfa, dostluklarını ve birliklerini test eden bu zorlu mücadelede birbirlerine destek olurken, eski mahallelerinde unutulmaz bir serüven yaşarlar.', NULL, 84, 2, '../uploads/Rafadan Tayfa.png', 'https://youtu.be/eF-dwJ5cKsM?si=D3leEKaIvQGM1sPX', 'https://www.fullhdfilmizlesene.de/film/rafadan-tayfa-dehliz-macerasi/'),
-(60, 'Kötü Kedi Şerafettin', '2016-02-05', 7.0, 'Film, İstanbul\'un sokaklarında yaşayan serseri kedi Şerafettin\'in maceralarını konu alır. Sert mizacı ve asi ruhuyla tanınan Şerafettin, babası Tonguç, yakın dostları Fare Rıza ve Martı Rıfkı ile birlikte yaşamaktadır. Şerafettin, rutin hayatına devam ederken, bir gün eski düşmanlarıyla karşılaşır ve olaylar çığırından çıkar.\r\n\r\nFilm boyunca Şerafettin, çeşitli belalarla ve düşmanlarla mücadele ederken, bir yandan da komik ve beklenmedik olaylarla başa çıkmak zorunda kalır. Şerafettin\'in hayatta kalma mücadelesi, komik diyaloglar ve absürd durumlarla dolu, hızlı tempolu bir maceraya dönüşür.\r\n', NULL, 86, 2, '../uploads/Kötü Kedi Şerafettin.png', 'https://youtu.be/un5n6tpRT-8?si=oEb1HFclIJboTJUe', 'https://youtu.be/VDzII45fC9Y?si=AKywgFXUIRj_JpTc'),
-(61, 'Ayla', '2017-10-27', 8.2, '1950 yılında Kuzey Kore, Güney Kore\'ye saldırdığında Birleşmiş Milletler\'in yaptığı yardım çağrısı sonucu Türkiye, Kore\'ye bir tugay gönderir. Her şey, gönderilen tugayın içindeki askerlerden birisi olan Süleyman Astsubay\'ın (Süleyman Dilbirliği) gece vakti savaş meydanında annesi babası öldürülmüş küçük bir kız çocuğunu bulmasıyla başlar. Sıra 5 yaşındaki küçük kıza isim vermeye gelince Süleyman Astsubay, \"Ay gibi yüzü var, zaten Ay ışığında bulduk.\" diyerek Ayla ismini verir.\r\n\r\n15 ay boyunca Ayla\'nın bakımını üstlenen Süleyman Astsubay\'ın artık Türkiye\'ye dönmesi gerekmektedir. Devamında üst düzey kişilerin de devreye girmesiyle Ayla, Kore\'deki Türk askerî misyonunca kurulmuş olan Ankara Okuluna başlar. Ayla\'yı bırakıp gitmek istemeyen Süleyman Astsubay, onu Türkiye\'ye götürmek için birçok yolu dener. Hatta, Ayla\'yı bir bavulun içine koyup kimselere fark ettirmeden götürmeye bile kalkışır, fakat bir türlü Güney Kore yasalarını aşıp Ayla\'yı Türkiye\'ye dönerken yanına alamaz.\r\n\r\nSavaş günlerini geride bıraktıktan 60 yıl kadar sonra Ayla ve Süleyman Dilbirliği, başarılı ve hevesli gazetecilerin yardımıyla Güney Kore\'de, Ankara Parkı\'nda tekrar bir araya gelirler.', NULL, 124, 3, '../uploads/Ayla.png', 'https://youtu.be/8PELOIYaEiw?si=3rriQuxnbjbJHg04', 'https://youtu.be/DOjJ5ZufarE?si=VE1H1ygQhg75B50n'),
-(62, 'Issız Adam', '2008-11-07', 6.8, 'Film, yalnızlık içinde yaşayan Alper\'in hikayesiyle başlar. Alper, eski bir matematik öğretmenidir ve İstanbul\'un trafiği ve kalabalığı arasında hayatını sürdürmektedir. Bir gün, tesadüfen tanıştığı Ada ile aralarında beklenmedik bir yakınlık başlar. Ada\'nın enerjisi ve hayat doluluğu, Alper\'in monoton yaşantısına yeni bir perspektif kazandırır.\r\n\r\nAlper ve Ada arasında başlayan bu ilişki, ikisinin de hayatında derin izler bırakır. Ancak geçmişin gölgeleri ve Alper\'in içsel çatışmaları, mutluluğun önünde engel oluşturur. İkisi de kendi iç dünyalarında yolculuk ederken, aşkın ve anlayışın gücünü keşfederler.', NULL, 93, 3, '../uploads/Issız adam.png', 'https://youtu.be/eFkKOG0uzpo?si=nMNtjadiYPBTlVDB', 'https://www.youtube.com/watch?v=_9OBWPc9h1o&list=PLMAaxzeWQJlVPmpe-VcAoAnQmELPnYwMP&index=2'),
-(63, 'Nefes Vatan Sağolsun', '2009-10-16', 8.0, 'Film, 1990\'lı yıllarda Güneydoğu Anadolu\'da terörist gruplarla mücadele eden Türk askerlerinin hikayesini odaklanır. Hikaye, bir grup genç askerin, ülke için verdikleri fedakarlık ve vatan sevgisi etrafında şekillenir. Askerler, operasyonlar sırasında hem fiziksel hem de psikolojik olarak zorlu şartlarla mücadele ederken, bir yandan da insanlık ve adalet mücadelesini sürdürürler.\r\n\r\nFilm, askerlerin olağanüstü cesaretlerini ve dayanıklılıklarını gözler önüne sererken, aynı zamanda savaşın insani ve toplumsal yıkımını da derinlemesine ele alır. Gerçek olaylardan esinlenen Nefes: Vatan Sağolsun, Türk milletinin birlik ve beraberlik ruhunu vurgulayan, duygusal ve etkileyici bir dramatik yapımdır.', NULL, 112, 3, '../uploads/Nefes Vatan Sağolsun.png', 'https://youtu.be/KyNgEddjK0A?si=_xCfenfIrCO20sHL', 'https://youtu.be/il9aTR94Q-Y?si=epA9Ph93izE7iXrC'),
-(64, 'Eşkiya', '1996-11-29', 8.1, 'Film, Türkiye\'nin kültürel ve sosyal dokusunu derinlemesine işleyen, duygusal yükü ağır bir hikaye sunar.\r\n\r\nBaran (Şener Şen), uzun yıllar hapis cezası çekmiş bir adamdır ve cezasının sonunda hapisten çıkar. Baran, yıllar önce terk ettiği köyüne geri döner ve burada yeniden hayata tutunmaya çalışır. Ancak köyü artık eski dostları ve düşmanlarıyla doludur.\r\n\r\nKöyde, Baran\'ın uzun süredir hasret kaldığı sevdiği kadın Keje (Uğur Yücel) ile yeniden karşılaşır. Ancak zaman içinde ortaya çıkan sırlar ve geçmişin hesaplaşması, Baran\'ın huzur arayışını zorlar. Baran, geçmişiyle yüzleşirken, köydeki insanların yaşam mücadelesine tanıklık eder ve bu süreçte kendisiyle ve çevresiyle hesaplaşır.', NULL, 122, 4, '../uploads/Eşkıya.png', '-', 'https://hdfilmcehennemi.cx/eskiya/'),
-(65, 'Cenneti Beklerken', '2006-12-15', 6.6, 'On yedinci yüzyılda, Osmanlı İmparatorluğu\'nun başkenti İstanbul\'da yaşayan minyatür ustası Eflatun (Serhat Tutumluer), ustalarının kendisine öğrettiklerine karşı gelerek eşinin ve oğlunun ölümü sonrasında, Batılı tarzda portrelerini çizer. Bu tarz portrelerin İslam dinine aykırı olduğunu düşündüğü için içinde çelişkili duygular kabaran Eflatun, bir gün zorla bir Osmanlı vezirinin konağına götürülür. Vezir, Eflatun\'dan, Osmanlı İmparatorluğu\'na karşı ayaklanan Danyal (Nihat İleri) adlı sözde bir şehzadenin, idamından önce Batılı tarzda portresini yapmasını ister.\r\n\r\nÇırağı rehin alınan Eflatun, bu emir karşısında vezirin bir grup silahlı adamıyla birlikte Anadolu bozkırlarına doğru tehlikeli bir yolculuğa çıkar. Yolda rastladığı köle kızı Leyla\'yı (Melisa Sözen) acıyarak yanına alan Eflatun, taht kavgasının ortasında bir yandan var olma mücadelesi verirken diğer yandan da bu güzel köle kız ile gizliden gizliye bir aşk yaşamaya başlar. Verdikleri kayıplara rağmen Şehzade Danyal\'ın hapsedildiği kaleye vardıklarında grubu büyük bir sürpriz beklemektedir.\r\n\r\nKavganın ve aşkın imparatorluğunda hayatta kalma savaşı veren Eflatun ve Leyla, hayalle gerçeğin harmanlandığı bu büyülü masalda kendi cennetlerini yaratırlar.', NULL, 107, 4, '../uploads/Cenneti Beklerken.png', 'https://youtu.be/4oMhByyt7PU?si=6vL9Awb-iZoJdkqM', 'https://jetfilmizle.de/cenneti-beklerken-filmi-izle.html'),
-(66, 'Propaganda', '1999-03-05', 7.1, 'Doğup büyüdüğü Hislihisar kasabasına, gümrük muhafaza müdürü olarak dönen Mehdi ve çocukluk arkadaşı Rahim\'in ailelerinin kasabanın ortasından geçen sınır telleri ile parçalanan hayatlarını anlatıyor. Neredeyse yüzyıllardır birlikte yaşayan Hislihisarlıların altüst olan sosyal yaşamlarını, aşklarını, ticaretlerinin önünde duran dikenli telleri ve merkezî otoriteye karşı hayatlarını nasıl savunduklarını görüyor, 1948\'de yaşanan bu trajikomik öykünün yarım asırdır çok fazla değişime uğramadığına tanık oluyorsunuz. Bu arada Mehdi\'nin oğlu Adem ile Rahim\'in kızı Filiz arasındaki tutkulu aşk, aralarından geçen sınır çizgisi nedeniyle iyice imkânsızlaşır.', NULL, 111, 4, '../uploads/Propaganda.png', 'https://youtu.be/kpcaoRWY0I4?si=PeBfkmcNNtHc_86q', 'https://www.hdfilmcehennemi2.cx/propaganda-izle-1'),
-(67, 'Dabbe Bir Cin Vakası', '2012-08-03', 5.8, 'Gerçek olaylardan esinlenerek hazırlanmış bir korku filmi. Film, Türkiye\'nin İzmir şehrinde yaşayan Ceyda ve ailesinin başına gelen ürkütücü olayları konu alıyor. Ceyda, evinde ve çevresinde açıklanamayan, korkutucu olaylar yaşamaya başlar. Bu olaylar arttıkça, ailenin huzuru bozulur ve Ceyda, yaşadığı dehşeti çözmek için bir parapsikolog ekibinden yardım almaya karar verir.\r\n\r\nParapsikolog ekibi, evdeki paranormal aktiviteleri incelemek üzere eve yerleşir ve yaşanan olayları kayıt altına almaya başlar. Ancak, araştırmalar ilerledikçe olayların ardındaki korkunç gerçekler ortaya çıkar. Ceyda ve ailesi, cinlerin hedefi haline gelmiştir ve hayatta kalmak için zorlu bir mücadele vermek zorundadırlar.\r\n', NULL, 119, 5, '../uploads/Dabbe Bir Cin Vakası.png', 'https://youtu.be/oA3tVlB2jzk?si=63AhJYUavLUhuHD-', 'https://youtu.be/qdG-TeX3p74?si=xCbJjGK7rTV9UlV5'),
-(68, 'Musallat', '2007-11-16', 5.9, 'İstanbul’da yaşayan genç bir çiftin, Suat ve Nurcan’ın, üzerine çöken karanlık ve doğaüstü olayları konu alıyor.\r\n\r\nSuat ve Nurcan, mutlu bir hayat sürmekteyken, Suat\'ın yaşadığı garip ve korkutucu rüyalarla huzurları bozulur. Rüyalarında karanlık varlıkların saldırısına uğrayan Suat, kısa süre sonra gerçek dünyada da tuhaf ve dehşet verici olaylar yaşamaya başlar. Bu olaylar, çiftin hayatını altüst eder ve Suat\'ın psikolojik durumunu hızla kötüleştirir.\r\n\r\nYaşadıkları olayların arkasında karanlık güçlerin olduğuna inanan Suat, çözüm bulmak için doğaüstü olaylar ve cinler hakkında bilgi sahibi olan bir hocadan yardım alır. Ancak, araştırmalar derinleştikçe, Suat ve Nurcan kendilerini korkunç bir kâbusun içinde bulurlar. Cinlerin etkisi altında kalan çift, hayatta kalmak ve bu lanetten kurtulmak için zorlu bir mücadele vermek zorundadır.', NULL, 96, 5, '../uploads/Musallat.png', 'https://youtu.be/-PqXMm-n7HM?si=vo6sS1GmPVpQ6dLt', 'https://fullfilmizle.cx/musallat-1-2007-izle/'),
-(69, 'Semum', '2008-02-08', 5.0, 'Film, genç ve güzel bir kadın olan Canan\'ın (Ayça İnci) etrafında gelişen korkutucu olayları konu alıyor. Canan ve eşi Volkan (Burak Hakkı), yeni bir eve taşınır ve burada mutlu bir hayat sürmeye başlarlar. Ancak, kısa süre sonra Canan garip ve ürkütücü olaylar yaşamaya başlar. Rüyalarında ve gerçek hayatta peşini bırakmayan karanlık varlıklar, Canan\'ı derinden etkiler ve onun ruh sağlığını bozar.\r\n\r\nCanan, bu dehşet verici olayların ardındaki gizemi çözmek için araştırmalar yapmaya başlar ve sonunda bir medyumdan yardım almaya karar verir. Medyumun yardımıyla, Canan\'a musallat olan varlığın Semum olduğu ortaya çıkar. Semum, en güçlü ve en tehlikeli cinlerden biridir ve Canan\'ı ele geçirmiştir. Canan ve Volkan, bu korkunç varlıktan kurtulmak için zorlu bir mücadele vermek zorundadırlar.', NULL, 116, 5, '../uploads/Semum.png', 'https://youtu.be/Tle4YXFbDA0?si=dwX5l0VeudZnkl9N', 'https://www.fullhdfilmizlesene.de/film/semum/'),
-(70, 'Güz Sancısı', '2009-01-23', 6.1, '1955 yılı güz mevsimine doğru yol alırken, Beyoğlu\'nun ışıltılı güzelliğinin üstüne Türkiye\'nin gerginleşen siyasi ortamının gölgeleri düşmeye başlamıştır. Antakya\'daki güçlü nüfuzu yüzünden DP\'nin yakından ilgilendiği, babasının tek oğlu olan Behçet, İstanbul\'da Hukuk Fakültesi\'nde asistanlık yaparken, yetiştiriliş tarzı ve babasının etkili kimliğinin gölgesinde marjinal düşüncelere doğru sürüklenmektedir.Behçet\'i sürüklendiği yolda tökezleten tek şey, oturduğu dairenin karşısındaki bir başka dairenin penceresinde gizlice izlediği kadın olacaktır. Behçet tarafından izlendiğini bilen bu kadın Elena?dır. Elena, Beyoğlu\'nun kozmopolit güzelliğini oluşturan eşsiz parçalardan biridir. Genç kadın, kendisi de eski bir fahişe olan babaannesi tarafından, üst düzey bürokratlara sunulan bir fahişedir. Babaanne ile torun arasında, yaşadıkları toplumda gayrimüslim olmanın getirdiği dayanışmanın ötesinde, gizemli bir bağımlılık ilişkisi vardır. Gayrimüslimleri taraf olarak belirleyen ve günden güne coşan siyasi dalgaların ortasında, Elena ile Behçet arasındaki karşı konulmaz aşk, kendini savunmaya çalışmaktadır. İki genç, aşkın topraklarında \'aynı\', yaşadıkları ülkenin topraklarında \'farklı\' taraflardadırlar. Behçet, militan bir kalemin günbegün koyulaşan renklerle çizdiği politik çizgide yürürken; attığı her adım onu, düşman uyruğundaki Elena\'dan, yani aşktan biraz daha uzaklaştırmaktadır. Elena ise, babaannesinin ona biçtiği, çıkışı olmayan yazgının duvarlarını Behçet\'e duyduğu aşkla zorlarken, başka bir çıkışsız yazgının; sevgilisini teslim alan marjinal siyasetin duvarlarına çarpacaktır.', NULL, 112, 6, '../uploads/Güz Sancısı.png', 'https://www.sinemalar.com/film/21312/guz-sancisi', 'https://youtu.be/FzhjTqMKGSk?si=QMj3bEhrka5bq2SQ'),
-(71, 'Av Mevsimi', '2010-12-03', 7.4, 'Film, İstanbul Emniyet Müdürlüğü Cinayet Büro Amirliği\'nde çalışan deneyimli polislerin ve onların genç meslektaşlarının karmaşık bir cinayet vakasını çözmeye çalışırken yaşadıkları olayları konu alır.\r\n\r\nBaşkomiser Ferman (Şener Şen), nam-ı diğer \"Avcı,\" işine olan bağlılığı ve titizliği ile tanınan deneyimli bir polistir. Onun yardımcısı İdris (Cem Yılmaz) ise keskin zekası ve mizahi kişiliğiyle dikkat çeker. Ekiplerine yeni katılan Hasan (Okan Yalabık), diğer adıyla \"Deli,\" ise genç ve hırslı bir polis memurudur. Üç polis, bir genç kızın vahşi bir cinayete kurban gitmesiyle başlayan karmaşık bir davayı çözmek için bir araya gelirler.\r\n\r\nCinayet soruşturması derinleştikçe, ekip kendilerini daha büyük bir komplonun ve tehlikeli bir avın içinde bulur. Ferman, İdris ve Hasan, katilin izini sürerken kendi iç dünyalarıyla da yüzleşmek zorunda kalırlar. Kendi hayatlarında yaşadıkları trajediler ve kayıplar, onları hem birbirlerine hem de çözdükleri davaya daha da bağlar.', NULL, 138, 6, '../uploads/Av Mevsimi.png', 'https://youtu.be/7Znt70zppYA?si=Zvac0RBwByMbTyJC', 'https://youtu.be/VQWH6FZfnfk?si=wAMFxuGEwPXnbXiO'),
-(72, 'Anlat İstanbul', '2005-03-11', 7.3, 'İstanbul\'un büyülü ve karmaşık dünyasında beş ayrı hikaye, beş farklı yönetmenin gözünden seyirciye aktarılır. Kentin her bir köşesi, karakterlerin hayatlarını ve duygusal derinliklerini anlatan öykülerle doludur.\r\n\r\nDeniz Hanedanı:\r\nBir otelde çalışan bir genç kadın olan Serap\'ın hayatı, bir yabancının oteldeki odasına girip çıkmasıyla değişir. Bu beklenmedik olay, onun hayatında derin etkiler bırakır.\r\n\r\nGüneş ve Gökyüzü:\r\nBir zamanlar dans eden ama artık hayatın yükleri altında ezilen bir kadın, hayatında yeni bir umut arayışındadır. Hayatı boyunca tutkuyla bağlı olduğu dans, onun için sadece bir anı olmaktan çıkar.\r\n\r\nŞans Kapıyı Kırınca:\r\nHayatta başarısız olan bir adam, umutsuz bir şekilde intiharı düşünmektedir. Ancak bir gün, hayatı beklenmedik bir şekilde değişir ve o güne kadar görmediği bir şeyi görmeye başlar.\r\n\r\nArafta:\r\nBir işçi, gecenin bir yarısı hayatının en zor kararlarından birini vermek zorunda kalır. Bu karar, aynı zamanda onun geçmişiyle yüzleşmesine neden olur ve hayatının dönüm noktası olur.\r\n\r\nBaşka Bir Gece:\r\nBir gece kulübü sahibi olan bir adam, müşterileriyle ilişkilerinde ve iş hayatında karşılaştığı zorluklarla mücadele ederken, hayatında bir dizi önemli karar almaktadır. Gece kulübü, onun için sadece bir iş yeri değil, aynı zamanda yaşamının bir parçasıdır.', NULL, 95, 6, '../uploads/Anlat İstanbul.png', 'https://youtu.be/JsrNUHWhJ4g?si=TXNRlHJBp8Va2GYG', 'https://www.google.com/search?q=anlat+istanbul+2005+izle&oq=anlat+istanbul+2005+izle&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORiABDIKCAEQABiABBiiBDIKCAIQABiABBiiBDIKCAMQABiABBiiBNIBCDU2NDRqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8#fpstate=ive&vld=cid:3a4c0208,vid:PRXqfcT'),
-(73, 'Hababam Sınıfı', '1975-04-04', 9.2, 'Mahallenin zenginlerinden birinin okulunda eğitim gören bir grup öğrenci, başlarını belaya sokan ve sınıfı sürekli kargaşa içinde tutan öğrencilerdir. Öğrenciler arasında boş zamanlarında yapacakları aktiviteler, derslere karşı ilgileri olmaması ve okuldaki disiplinsiz tavırları nedeniyle sınıf öğretmeni olan Mahmut Hoca\'nın (Münir Özkul) sabrını zorlarlar.\r\n\r\nAncak sınıf, aynı zamanda birbirinden farklı karakterlere sahip olan öğrencilerin bir araya gelmesiyle birlikte eğlenceli ve sıcak bir dostluk ortamı da oluşturur. Her biri kendi benzersiz özellikleriyle öne çıkan öğrenciler, sınıf içinde ve okulun çeşitli etkinliklerinde birlikte maceralara atılırlar.\r\n\r\nFilm, öğrencilerin okulda geçirdikleri zamanı, öğretmenleriyle olan ilişkilerini ve mahallede yaşadıkları günlük olayları komik bir dille anlatır. Her bir karakterin özgün kişilikleri ve sınıf içindeki dinamikleri, izleyicilere hem güldürüp hem de düşündüren bir deneyim sunar.', NULL, 85, 7, '../uploads/Hababam Sınıfı.png', '-', 'https://youtu.be/hf2-8MRPGu8?si=mEg3gV211Wd0VmUL'),
-(74, 'Recep İvedik', '2008-02-22', 4.9, 'Recep İvedik, İstanbul\'da yaşayan, sıradan bir adamdır. Kendine özgü mizahi ve bazen absürt tavırlarıyla dikkat çeker. Bir gün yaşadığı apartmanın çatısından düşen bir topu kurtarmak isterken kaza yapar ve mahallesindeki insanlardan dışlanır. Bu olayın ardından yaşadığı sıkıntılar ve çevresinden aldığı tepkiler üzerine, mahallesinden uzaklaşarak yeni bir başlangıç yapmaya karar verir.\r\n\r\nRecep İvedik, bu süreçte akrabalarından birinin köyündeki boş bir eve yerleşir. Köyde, buradaki insanlarla ve yaşantılarıyla tanışır. Zamanla köy halkı arasında sevilen bir karakter haline gelir. Ancak Recep, şehirden getirdiği alışkanlıklar ve tuhaf tavırlarıyla köyde de olaylara karışır ve komik durumlara düşer.\r\n\r\nFilmin temel hikayesi, Recep İvedik\'in yaşadığı bu köy macerası üzerine kuruludur. Onun olaylara bakış açısı, mizahi yaklaşımı ve etrafındaki insanlarla ilişkileri, film boyunca izleyiciye eğlenceli anlar yaşatır.', NULL, 102, 7, '../uploads/Recep İvedik.png', 'https://youtu.be/ite5gbn55TQ?si=6PhLQmQGfhYzPZ7d', 'https://jetfilmizle.de/recep-ivedik-1-izle-2008.html'),
-(75, 'Organize İşler', '2005-12-23', 7.4, 'Film, Ankara\'nın kenar mahallelerinden birinde yaşayan Aziz\'in (Yılmaz Erdoğan) etrafında döner. Aziz, birçok suç örgütü ve mafya babası arasında işlerini organize eden zeki ama bir o kadar da şanssız bir adamdır.\r\n\r\nAziz\'in başı, bir yandan karısı Didem (Demet Akbağ) ile evlilik sorunları yaşarken, diğer yandan işlerindeki komik ve karmaşık durumlarla beladadır. Bir gün, Aziz\'in başına beklenmedik bir olay gelir ve onun hayatı tamamen değişir. Bu olay, hem Aziz\'in hem de çevresindekilerin hayatını birbirine bağlar ve komedi dolu maceraların başlamasına sebep olur.\r\n\r\nFilmde, Aziz\'in etrafında dönen renkli karakterler ve onların komik ilişkileri, izleyiciye güldürü dolu bir deneyim sunar. Aziz\'in kurnazlıkla karışık olaylarla başa çıkmaya çalışırken yaşadığı serüvenler, film boyunca seyirciyi ekran başına kilitleyen unsurlardan biridir.', NULL, 124, 7, '../uploads/Organize İşler.png', 'https://youtu.be/9G3UF2146r8?si=ZkfnPrDfHNW1xK3Z', 'https://fullhdfilm.pro/organize-isler-izle/'),
-(76, 'Düşman', '1979-02-03', 4.4, '\"İsmail\" (Aytaç Arman) belli bir işi olmayan ve ailesinin karnını doyurmak için her işte çalışan yoksul bir kenar mahâllelidir. Gelişen modern emperyalizmle birlikte İsmail gibi istemeye istemeye, korka korka para kazananların yanında İsmail\'in karısı gibi bu duruma kananlar da vardır. İşte bu mahallede sömürü kaynaklı yanlışların, ahlaksızlıkların görmezden gelinmesinin bu yanlışları bir virüs gibi nasıl herkese bulaştırdığı Yılmaz Güney\'in bakışıyla, Ökten\'in yansıtışıyla anlatılmıştır.', NULL, 120, 8, '../uploads/Düşman.png', 'https://youtu.be/_sRprvq4OKo?si=yo0a26qyks5CfM-N', 'https://dai.ly/x8kx4fy'),
-(77, 'Neşeli Günler', '1978-04-16', 8.7, 'Kazım Efendi (Münir Özkul) ve Saadet Hanım (Adile Naşit) turşuculuk yapan kendi hâlinde bir çifttir. Altı çocuklarıyla birlikte yaşamlarını sürdürmektedirler. Sürekli olarak turşu suyu yüzünden kavga etmektedirler. Bir gün yine turşunun limonla mı yoksa sirke ile mi yapıldığı konusunda alevlenen kavga, çiftin ayrılmasına sebep olur. Kazım Efendi üç çocuğunu alır ve evi terk ederken, Saadet Hanım diğer üç çocuğu alır ve çift boşanır. Yıllar sonra ayrılan kardeşler tesadüf eseri birbirlerini bulur ve bir araya gelmek isterler. Ancak yıllardır anne ve babaları dargın olduğu için bu o kadar da kolay olmayacaktır.', NULL, 96, 8, '../uploads/Neşeli Günler.png', 'https://youtu.be/6aSETIqEfso?si=KskFH4TDSmEFbOCZ', 'https://youtu.be/FQ_7cabWOv0?si=zSNALyBOblzg82z1'),
-(78, 'Tosun Paşa', '1976-02-01', 8.9, 'Filmin olay örgüsü, 19. yüzyılda Osmanlı İmparatorluğu\'na bağlı Mısır Eyaleti\'nde geçmektedir. Tellioğulları ve Seferoğulları adlı iki meşhur aile, İskenderiye\'nin en değerli yeri olan Yeşil Vadi için birbirleriyle kıyasıya bir mücadeleye girer. Vadinin kime ait olduğuna devlet görevlileri de karar veremezler. Tellioğlu ve Seferoğlu aileleri de bunun üzerine, Yeşil Vadi\'yi ele geçirmek için İskenderiye\'nin en büyük devlet memuru olan Daver Bey\'in kızı Leyla\'yı (Müjde Ar) almak için kıyasıya bir mücadeleye girerler. Daver Bey (Mete Sezer), Leyla\'yı Seferoğulları\'na vermeye karar verir. Bu durumda Tellioğlu ailesi, daha büyük bir torpil için evin uşağı olan Şaban\'ı (Kemal Sunal) Kahire\'nin en hatırı sayılır ve en heybetli paşası olan Tosun Paşa olarak tanıtırlar.\r\n\r\nTosun Paşa kılığındaki Şaban, Tellioğlu ailesinin en büyük oğlu Lütfü\'nün (Şener Şen) yakın arkadaşı gibi davranıp Yeşil Vadi ve Leyla\'yı Tellioğulları\'na kazandıracağına, Leyla\'ya kendisi âşık olur ve her şeyi eline yüzüne bulaştırır. Sonuçta işler Arap saçına döner ve en sonunda hakiki Tosun Paşa, Kahire Sarayı\'ndan çıkar gelir.\r\n\r\nGerçek Tosun Paşa (Oktar Durukan), Yeşil Vadi\'ye el koyar ve Daver Bey\'in kızı Leyla\'yı kendine eş olarak alır. Neticede bu olaydan ötürü kellelerini bile zor kurtaran Tellioğulları, hayatta kaldıklarına şükreder bir hâle gelirler. Herkesin gözünde suçlu Şaban olmuştur. Halbuki Lütfü kendi kazdığı kuyuya düşmüş, esas Tosun Paşa\'nın varlığını bir an için unutmuştur.', NULL, 85, 8, '../uploads/Tosun Paşa.png', 'https://youtu.be/OxSz6qzM2G4?si=50phv8jBHHHp0vg3', 'https://youtu.be/guqpuNWQDhc?si=tb3tBM8HvXg9s7fi'),
-(79, 'Aşk Sana Benzer', '2015-01-23', 3.8, 'Aşk Sana Benzer, başrollerini Fahriye Evcen ve Burak Özçivit\'in paylaştığı 2014 yapımı Türk filmidir. 23 Ocak 2015\'te vizyona giren yapım bir aşk hikâyesidir. Muğla\'da bir sahil kasabasında geçmektedir. Deniz dondurmacı, Ali ise balıkçıdır. Deniz\'in eski hayatını unutmak için geldiği sahil kasabasında dondurmacıda çalışmaya başlar. Dondurma malzemesi almak için çıktığındaysa Ali\'yle karşılaşır. Ali ilk gördüğü andan itibaren Deniz\'e vurulmuştur ve peşini hiç bırakmayacaktır.', NULL, 94, 9, '../uploads/Aşk Sana Benzer.png', 'https://youtu.be/0EGFT3xzy9M?si=tjvThPhZJruP7U2f', 'https://hdfilmcehennemi.cx/ask-sana-benzer/'),
-(80, 'Unutursam Fısılda', '2014-10-29', 7.5, 'Film, genç bir kadının geçmişiyle hesaplaşma sürecinde yaşadığı duygusal ve hayat dolu yolculuğu konu alır.\r\n\r\nFüsun, annesinin ölümünden sonra İstanbul\'dan köyüne döner ve annesinin gençlik yıllarında yaşadığı aşk hikayesini araştırmaya başlar. Bu süreçte, annesinin aşkını ve gençliğini yeniden keşfederken kendi geçmişiyle de yüzleşmek zorunda kalır. Köydeki yaşlıların anlattığı hikayeler ve annesinin hatıraları arasında gidip gelirken, Füsun\'un hayatı beklenmedik bir şekilde genç ve karizmatik bir adam olan Deniz ile kesişir.\r\n\r\nDeniz, Füsun\'un hayatına girdikçe, ikisinin de geçmişlerindeki yaraları iyileştirmelerine yardımcı olur. Birlikte yaşadıkları anılar, duygusal bağlarını derinleştirir ve ikisi de gelecekle ilgili yeni umutlar besler. Ancak geçmişin izleri ve sırları, Füsun\'un aşk ve yaşamı yeniden tanımlama sürecinde önemli bir rol oynar.', NULL, 118, 9, '../uploads/Unutursam Fısılda.png', 'https://youtu.be/u9x2S9d_1zs?si=wKXtaBnowoBhbSEM', 'https://www.hdfilmcehennemi2.cx/hd-unutursam-fisilda-izle'),
-(81, 'Neredesin Firuze', '2004-02-20', 7.4, 'Hayri ve Orhan, piyasaya sürdükleri başarısız kasetler sonucu borç batağında olan iki prodüktördür. İstanbul Plakçılar Çarşısında borçlu olmadıkları kimse kalmamıştır. O sıralar Almanya\'da yaşayan düğün şarkıcısı Ferhat ile irtibata geçerler. Telefonda şarkı söylettikleri Ferhat\'ın sesini çok beğenirler ve hemen harekete geçerler. Şarkıcı olmak düşüncesine saplantılı bir şekilde bağlı olan Ferhat, Hayri\'nin kaset teklifini düşünmeden kabul eder, eşyalarını toplar ve soluğu İstanbul\'da alır. Ferhat\'ı hemen stüdyoya sokarlar ancak kaset borçlar yüzünden basılamaz. Ferhat son bir çare olarak bir televizyon şovuna çıkıp adını duyurmaya çalışır. Ertesi gün ofise Firuze adında zengin ve gizemli bir kadın gelir. Ferhat\'a yatırım yapmak istediğini söyler. Birdenbire Umut Müzik\'teki karabulutlar dağılır. Herkes hayaller kurmaya başlar.', NULL, 128, 9, '../uploads/Neredesin Firuze.png', 'https://youtu.be/4w4HXZNO6qU?si=5fgeeQpnUFkwloPt', 'https://youtu.be/pNLXfoYYnls?si=tV-CZPqgpJAvYl5F'),
-(82, 'Deneme', '2000-10-15', 5.0, 'deneme', NULL, 30, 2, '../uploads/Neredesin Firuze.png', 'VOV', 'VOV VOV');
-
--- --------------------------------------------------------
-
---
--- Tablo için tablo yapısı `iletisim`
---
-
-CREATE TABLE `iletisim` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `ad_soyad` varchar(100) NOT NULL,
+  `adsoyad` varchar(100) NOT NULL,
   `eposta` varchar(100) NOT NULL,
   `mesaj` text NOT NULL,
-  `tarih` timestamp NOT NULL DEFAULT current_timestamp()
+  `kayit_tarihi` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -269,203 +64,186 @@ CREATE TABLE `iletisim` (
 --
 
 CREATE TABLE `kategoriler` (
-  `kategori_id` int(11) NOT NULL,
-  `kategori_adi` varchar(100) NOT NULL
+  `id` int(11) NOT NULL,
+  `kategori_adi` varchar(255) NOT NULL,
+  `gorsel` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Tablo döküm verisi `kategoriler`
 --
 
-INSERT INTO `kategoriler` (`kategori_id`, `kategori_adi`) VALUES
-(1, 'Aksiyon'),
-(2, 'Animasyon'),
-(3, 'Drama'),
-(4, 'Klasik'),
-(5, 'Korku'),
-(6, 'Gerilim'),
-(7, 'Komedi'),
-(8, 'Nostaljik'),
-(9, 'Romantik');
+INSERT INTO `kategoriler` (`id`, `kategori_adi`, `gorsel`) VALUES
+(39, 'Aksiyon', '../img/kategoriler/aksiyon.png'),
+(40, 'Açık Dünya', '../img/kategoriler/acik_dunya.png'),
+(42, 'Çok Oyunculu', '../img/kategoriler/cok_oyunculu.png'),
+(43, 'Hayatta Kalma', '../img/kategoriler/hayatta_kalma.png'),
+(44, 'Korku', '../img/kategoriler/korku.png'),
+(45, 'Macera', '../img/kategoriler/macera.png'),
+(46, 'Nişancı', '../img/kategoriler/nisanci.png'),
+(48, 'Ücretli', '../img/kategoriler/ucretli.png'),
+(49, 'Ücretsiz Popüler', '../img/kategoriler/ucretsiz_populer.png');
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `kullanicilar`
+-- Tablo için tablo yapısı `oyunlar`
 --
 
-CREATE TABLE `kullanicilar` (
+CREATE TABLE `oyunlar` (
   `id` int(11) NOT NULL,
-  `kullanici_adi` varchar(50) NOT NULL,
-  `sifre` varchar(255) NOT NULL
+  `oyun_adi` varchar(255) NOT NULL,
+  `gorsel` varchar(255) NOT NULL,
+  `aktif_oyuncu_sayisi` int(11) NOT NULL,
+  `kategori_id` int(11) NOT NULL,
+  `aciklama` text NOT NULL,
+  `yapimci` varchar(255) NOT NULL,
+  `yayinlanma_tarihi` date NOT NULL,
+  `rating` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Tablo döküm verisi `kullanicilar`
+-- Tablo döküm verisi `oyunlar`
 --
 
-INSERT INTO `kullanicilar` (`id`, `kullanici_adi`, `sifre`) VALUES
-(1, 'sedef', 'sedef123');
+INSERT INTO `oyunlar` (`id`, `oyun_adi`, `gorsel`, `aktif_oyuncu_sayisi`, `kategori_id`, `aciklama`, `yapimci`, `yayinlanma_tarihi`, `rating`) VALUES
+(66, 'Echo Of The Horizon', '../img/yuklemeler/echo_of_the_horizon.png', 145000, 40, 'Echo Of the Horizon, kusursuz ve sürükleyici bir açık dünya deneyimi sunan nefes kesici bir oyundur. Uzak bir dış gezegende geçen oyunda, gerçek ve özgürlük arayışıyla hareket eden cesur bir savaşçı olan Echo\\\'nun rolünü üstleniyorsunuz. Oyun, oyuncuların yemyeşil ormanlardan ve yükselen dağlardan geniş şehirlere ve antik kalıntılara kadar çeşitli manzaraları özgürce keşfetmelerine olanak tanır. Gizli sırları keşfedin, gizli medeniyetleri ortaya çıkarın ve dünyada yaşayan çeşitli karakterlerle etkileşime geçin. Oyun 12 yaş ve üzeri için uygundur. Ücretsiz bir oyundur.', 'Echo Of The Horizon CO. L.L.C', '2024-04-26', 7.7),
+(69, 'Ashen', '../img/yuklemeler/ashen.png', 250000, 39, 'Genişleyen bir açık dünyada geçen Ashen, gezgininize yeni aydınlatılmış bir dünyada rehberlik etmeyi amaçlayan sıkı, 3. şahıs, beceriye dayalı bir aksiyon RPG\'sidir. Başkalarıyla birlikte savaşın, dostluklar kurun ve dünyayı tekrar karanlığa gömmeye kararlı gölge yaratıklarını alt edin. Gizemli zindanları keşfedin, destansı patronlarla savaşın ve muhteşem manzaralar ve efsanevi yaratıklarla dolu çeşitli bölgeleri keşfedin. Yolculuğunuzda size katılacak ve evinizi canlı bir şehre dönüştürecek karakterlerle tanışın. Bu yeni ışık çağında Ashen\'ı korumalı ve aç gölgeleri sonsuza kadar yok etmelisiniz. 12 yaş ve üzeri için uygundur. Ücreti Epic Games\'te 300₺\'dir.', 'Annapurna Interactive', '2018-12-07', 6.3),
+(70, 'EVE Online', '../img/yuklemeler/eve_online.png', 400000, 39, 'EVE Online, tüm zamanların en büyük tek mekânlı MMO\'sudur. 7.000\'den fazla güneş sistemine ve oyuncular tarafından yaratılan yaklaşık 20 yıllık zengin tarihe sahip bu çok katmanlı evrene katıl ve dev PvP ya da PvE savaşlarından maden çıkarmaya, keşfe ve endüstriye kadar her şeyi ücretsiz olarak oyna. 12 yaş ve üzeri için uygundur. ', 'CCP Games', '2003-05-06', 7.8),
+(71, 'No Straight Road', '../img/yuklemeler/no_straight_road.png', 350000, 39, 'Ritim dolu üçüncü şahıs dövüşünü harika müziklerle birleştiren muhteşem bir aksiyon-macera olan NO STRAIGHT ROADS\'ta bir rock grubu kurun ve EDM imparatorluğunu sona erdirin. 12 yaş ve üzeri için uygundur. Ücreti Epic Games\'te 39₺\'dir.', 'Fireshine Games', '2020-08-25', 7.6),
+(72, 'The New Order', '../img/yuklemeler/the_new_order.png', 110000, 40, 'Dünyadaki yıkıcı bir felaket, yerleşik siyaseti alaşağı eder ve altı fraksiyonun ortaya çıkmasına yol açar. Bu gruplar arasındaki çatışmalar, kendi hedeflerini ve avantajlarını takip ettikçe yoğunlaşıyor. Her gruptan kahramanlar, sibernetik ve güçlendirilmiş teçhizatlar kullanarak Terranium\'u ve diğer değerli mineralleri ele geçirmek için çatışmalara dalıyor.\r\nRekabetçi ve taktiksel atış poligonlarında gezinirken, kahramanların oluşturulduğu, oynanışların ortaya çıktığı ve servetlerin kazanıldığı, zorluklar, kişiselleştirme ve ödüllerden oluşan zengin bir dokuyu keşfedeceksiniz. Ücretsiz bir oyundur.', '3MERGED', '2024-06-11', 6.8),
+(73, 'Wuthering Waves', '../img/yuklemeler/wuthering_waves.png', 90000, 40, 'Wuthering Waves, yüksek derecede özgürlük sunan, hikâye açısından zengin bir açık dünya aksiyon RYO\'dur. Kayıp anılarını geri kazanıp Ağıt\'ı (Lament) alt etmek için zengin bir Rezonatör (Resonator) grubu ile birlikte yolculuğa çıkan bir Rover olarak derin uykundan uyanıyorsun. Oyun 12 yaş ve üzeri için uygundur. Ücretsiz bir oyundur.\r\n', 'KURO GAMES', '2024-05-23', 4.4),
+(74, 'Fall Guys', '../img/yuklemeler/fall_guys.png', 800000, 42, 'Tehlikelerden kaçınıp zafere doğru dalarak bir sakarlık efsanesi ol. İster acemi ister uzman ol, ister tek başına ister ekibinle yarış, Fall Guys sürekli yenilenen yoğun bir eğlence sunuyor!Kaosu yaratan kişi olmayı mı tercih edersin? Kendi engelli parkurunu inşa edip arkadaşlarınla veya toplulukla paylaş. Kendi Parkurunu yarat: Fall Guys Creative, acımasız özel turlar oluşturup bunları toplulukla paylaşmanı sağlayan bir seviye düzenleme aracı. Rekabet ve İşbirliği: Rekabetçi oyunlarla işbirliği gerektiren mücadeleler arasında yuvarlan veya 3 arkadaşınla Blunderdome\'a meydan oku! 3 yaş ve üzeri için uygundur. Ücretsiz bir oyundur.', 'Mediatonic', '2020-08-03', 7),
+(75, 'Horizon Chase 2', '../img/yuklemeler/horizon_chase_2.png', 500000, 42, 'Horizon Chase 2 , ödüllü yarış oyunları serisinin geldiği son nokta! Arcade kategorisinde hayat bulan bu oyun, sürükleyici ve hızlı tempolu oynanışıyla seni de içine çekecek. Arcade yarışlarının altın yılları, modern ve tamamen yenilenmiş bir oyuncu deneyimiyle geri dönüyor.90\'ların klasik oynanış mekanikleri, araçların üzerinde her daim tam kontrole sahip olmanı sağlar. Karmaşık kurulumları unut: Sollamalara, yol ayrımlarına ve nitrolara yalnızca birkaç adım uzaktasın. Kaşla göz arasında rakiplerini geçmek de senin elinde. Eline alıp oynaması kolay olsa da ustalaşması zor olan bu oyun , rakiplerini atlatıp bitiş çizgisinden geçmek için çevik refleksler ve keskin yarış becerileri gerektiriyor. Epic Games\'te oyunun ücreti 456₺\'dir.', 'Epic Games', '2003-09-14', 6.8),
+(76, 'Volley Pals', '../img/yuklemeler/volley_pals.png', 400000, 42, 'Basitleştirilmiş voleybol olarak oynanan 2 boyutlu oyunumuzda ana amaç topa vurup karşı takımın sahasına düşürmektir. Geleneksel voleybolda hoş karşılanmayabilecek birçok davranışı Volley Pals\'ta serbest kıldık. Bunlara örnek olarak: karşı takımın sahasına atlamak, karşı takım servisini kullanamadan sizin onların servisini kullanabilmeniz, ağ direğinin yüksekliğiyle oynamak, hatta oyun içerisinde taş-kağıt-makas oynayabilmek ve videoda da görebileceğiniz daha birçok çeşitli şey. 3 yaş ve üzeri için uygundur. Epic Games\'te oyunun ücreti 38₺\'dir.', 'NAISU', '2023-05-19', 5.8),
+(77, 'Asilium', '../img/yuklemeler/asilium.png', 115000, 43, '\"Asilium\", Asilium Studio tarafından geliştirilen, açık dünya MMORPG (Devasa Çok Oyunculu Çevrimiçi Hayatta Kalma Oyunu) olarak tasarlanan ve aynı zamanda entegre bir yapay zeka sistemi tarafından geliştirilmiş bir meta veri deneyimi sunan bir oyundur. 12 yaş ve üzeri için uygundur. Ücretsiz bir oyundur.', 'Asilium Yazılım A.Ş.', '2024-05-25', 5.2),
+(78, 'Hero Battle Fantasy Arena', '../img/yuklemeler/hero_battle_fantasy_arena.png', 110000, 43, 'Karanlık fantezi dünyasında bu epik aksiyon-hayatta kalma oyununda amansız düşman ordularına karşı savaş. Uzun süre hayatta kalmak için çeşitli runeleri ve yetenekleri öğrenin. Daha da yoğun aksiyon için yerel çok oyunculu modda arkadaşlarınızla savaşın! Oyun 3 yaş ve üzeri için uygundur. Epic Games\'te oyunun ücreti 15.50₺\'dir.', 'Beor Games', '2024-01-19', 4.8),
+(79, 'The Outlast Trials', '../img/yuklemeler/the_outlast_trials.png', 700000, 43, 'Red Barrels seni beyin uyuşturan bir dehşeti deneyimlemeye davet ediyor, ama bu sefer arkadaşlarla. Deneylere tek başına veya ekip olarak katılabileceksin ve yeterince hayatta kalabilir ve tedaviyi tamamlarsan Murkoff, yaşamana seve seve izin verecek… ama sen aynı kişi olacak mısın?\r\nSoğuk Savaş döneminde geçen oyunda insan kobaylar, Murkoff Corporation çalışanları tarafından gelişmiş beyin yıkama ve zihin kontrolü yöntemlerinde test edilmek üzere istemsizce kullanılıyor. Güvensizlik, korku ve şiddet dolu bir dünyada ahlaki değerlerin zorlanacak, dayanıklılığın test edilecek ve akıl sağlığın altüst olacak. 15 yaş ve üzeri için uygundur. Epic Games\'te oyunun ücreti 269₺\'dir.', 'Red Barrels', '2023-05-18', 8.4),
+(80, 'Cruelty', '../img/yuklemeler/cruelty.png', 750000, 44, '\"CRUELTY\" Japon yapımı bir sıçramalı korku filmidir.\r\nBir kaza geçirdiniz ve bilincinizi kaybettiniz.\r\nUyandığınız anda kendinizi bu Dünya\'ya ait olmayan bir kabus dünyasında buluyorsunuz. Çılgınlığın hüküm sürdüğü bir mezbahada korkunç sahneler yaşanıyor ve kaçınılmaz terör sizi bekliyor.\r\nHayatta kalmak için, ilerledikçe canavar varlıkların bakışlarından kaçarken bu korku dünyasındaki sayısız gizemi çözmelisiniz. 18 yaş ve üzeri için uygundur. Epic Games\'te ücreti 95₺\'dir.', '838s Maniacs', '2024-06-13', 8),
+(81, 'Killing Floor 2', '../img/yuklemeler/killing_floor_2.png', 847000, 44, 'KILLING FLOOR 2\'de oyuncular, Horzine Corporation\'ın haydut unsurları tarafından yaratılan Zed\'ler adı verilen korkunç, öldürücü klonlar tarafından istila edildikten sonra kıta Avrupa\'sına iniyorlar. 6 oyunculu Co-Op ve 12 oyunculu Zed\'e Karşı katliam kargaşası. 18 yaş ve üzeri için uygundur. Epic Games\'te ücreti 49₺\'dir.', 'Tripwire Etkileşimli', '2020-09-07', 7.6),
+(82, 'Quest Room', '../img/yuklemeler/quest_room.png', 430000, 44, 'Quest Room, korku türünde atmosferik bir oyundur; burada zor seçimlerle yüzleşmeniz, zekanızı göstermeniz, hareketlerinizi doğru şekilde koordine etmeniz ve mantığı kullanmanız gerekecek. Oyunun başında kilitli odada görünüyorsunuz, etrafınızda etkileşime girebileceğiniz birçok farklı nesne var. Görevin asıl amacı odadan çıkmaktır ve bunu yapmak için bilmeceleri çözmeniz ve gizli ipuçları bulmanız gerekir.\r\nSeni Neler Bekliyor?\r\nÇeşitli bulmacaları çözün.\r\nÖğeleri toplayın.\r\nNesnelerle etkileşim kurun.\r\nAna karakterin gizemli hikayesi.\r\nFarklı odalar.\r\nTam daldırma atmosferi. 16 yaş ve üzeri için uygundur. Epic Games\'te ücreti 139₺\'dir.', 'Tozlu Oyun', '2024-03-05', 8.4),
+(83, 'Dark and Darker', '../img/yuklemeler/dark_and_darker.png', 225450, 45, 'Dark and Darker\'ın ücretsiz sürümü, oyuncuların tek bir karakter oluşturmasına ve tüm haritalarda Normal modda oynamasına, görevleri tamamlamasına ve bir ganimet zulası oluşturmasına olanak tanır! Ücretsiz sürümde vakit geçirmekten keyif alan ve oyunun sunduğu her şeyi deneyimlemek isteyen oyuncular, 15 Redstone parçası (30,00 $ eşdeğeri) karşılığında tam sürüme yükseltebilirler. Oyunun tam sürümü, oyuncuların zorlukla kazandıkları donanımlarını daha da tehlikeli zindanlara girmek ve bahisleri artırmak için donatabilecekleri High-Roller moduna erişimi içerir. Oyuncular ayrıca diğer maceracılarla ticaret yapabilecekleri pazaryerine, toplam 9 karakter yuvasına ve Paylaşılan Zulaya tam erişim elde edecekler! \r\nBu sürümün oyunculara Dark and Darker\'ın sunduğu bazı şeyleri deneyimleme şansı vereceğini ve oyun testlerinden bu yana oynamamış olan oyunculara da tam sürüme geçmeden önce nelerin yeni olduğunu görme şansı vereceğini umuyoruz. 16 yaş ve üzeri için uygundur. Ücretsiz bir oyundur.', 'IRONMACE', '2023-08-08', 5.2),
+(84, 'Sift Heads Cartels', '../img/yuklemeler/sift_heads_cartels.png', 260000, 45, 'Vinnie, Kiro ve Shorty\'nin şehir gangsterleri ve İtalyan mafyasıyla savaştığı heyecan verici bir üçlemeye başlayın. Silahları yükseltin, kanlı bir hikayeye dalın ve gelişmiş oyun özelliklerinin keyfini çıkarın. Bu aksiyon dolu macerada savaşın, yükseltin ve hedeflerinizi kovalayın! 12 yaş ve üzeri için uygundur. Epic Games\'te ücreti 250₺\'dir.', 'Pyrozen', '2024-06-20', 7.9),
+(85, 'Survival Fountain of Youth', '../img/yuklemeler/survival_fountain_of_youth.png', 70000, 45, 'Hayatta Kalma: Gençlik Çeşmesi sizi tarihi Keşif Çağı\'ndan ilham alan heyecan verici bir maceraya davet ediyor. Bir gemi kazasının ardından kendinizi, hayatta kalma sanatında ustalaşmanız gereken ıssız adalarda mahsur kalmış halde buluyorsunuz. Alet yapmaktan barınak inşa etmeye, av avlamaktan avcılarla savaşmaya kadar her eylem önemlidir. 16 yaş ve üzeri için uygundur. Epic Games\'te ücreti 395₺\'dir.', '345000', '2024-05-21', 6.3),
+(86, 'Clid The Snail', '../img/yuklemeler/clid_the_snail.png', 650000, 46, 'İnsanlığın artık uzak bir anıdan ibaret olduğu bir dünyada belalı ve alkolik salyangoz Clid olarak memleketin olan kaleden sürgün ediliyorsun. Sadık ve konuşkan ateş böceği Belu\'yla birlikte yola çıkarak, toplumdan dışlanmış başka tuhaf karakterlerin olduğu bir ekiple tanışıp yeni bir ev bulacaksın. Bu yeni arkadaş grubuyla birlikte yeni amacın, diyarın altını üstüne getiren gizemli sümüklü böcek salgınına son vermek olacak.\r\nAlastor\'un üyeleri arasında içine kapanık bir kirpi, bir şaman kaplumbağa, dilsiz bir yarasa, bir ninja kurbağa ve tek gözlü bir bukalemun var. Her görevden sonra evine dönerek dinlenebilir, kaynak stoku yapabilir, ekipmanını geliştirebilir ve arkadaşlık ilişkilerini ilerletebilirsin. Bu eşsiz karakterleri daha yakından tanı ve geçmişlerini açığa çıkararak hikâyenin temelinde yatanları öğren.\r\nSilahlarını, el bombalarını ve sana özel salyangoz kabuklarını yaratıcılıkla kullanarak düşmanlarını alt et. Çevrenden avantaj sağla ve zafere ulaşmak için doğru yerde konuşlanmayı öğren. Epic Games\'te ücreti 69₺\'dir.', 'Weird Beluga S.L.', '2021-12-15', 8.2),
+(87, 'Destiny 2', '../img/yuklemeler/destiny_2.png', 700000, 46, 'Yıldızlar boyunca yayılan kuzey ışıklarının parıldayan sınırları içinde gizemli bir nesne belirir ve Nessus\'ın yüzeyine düşer. Bu gezegene seyahat et ve yalnızca Yankı olarak bilinen bu nesneyi aramaya başla.\r\nDestiny 2\'nin dünyasına dalıp güneş sisteminin gizemlerini keşfet ve etkileyici bir FPS deneyimi edin. Güçlü elementsel becerileri aç ve Gardiyanının görünüşünü ve oynayış tarzını özelleştirmek için benzersiz teçhizatlar topla. Destiny 2\'nin sinematik hikâyesinin, zorlu işbirliği görevlerinin ve çeşitli PvP modlarının keyfini ister arkadaşlarınla ister tek başına çıkar. Hemen ücretsiz olarak indir ve yıldızlara kendi efsaneni yaz.\r\nSürükleyici Bir Hikâye\r\nKötü şöhretli düşmanların saldırısı altında olan bir güneş sisteminde insanların son şehri olan Last City\'yi savunan Gardiyanlarından birisin. Gözünü yıldızlara çevir ve karanlığın karşısına çık. Efsanen şimdi başlıyor. 16 yaş ve üzeri için uygundur. Ücretsiz bir oyundur. ', 'Bungie', '2017-10-24', 5.4),
+(88, 'Destroy All Humans 2 Reprobed', '../img/yuklemeler/destroy_all_humans_2_reprobed.png', 20000, 46, 'Kimyasallardan kaynaklanan tüm ihtişamıyla özgür 60\'ları deneyimleyin ve ana geminizi havaya uçuran KGB\'den intikamınızı alın. Köleleştirmeye geldiğiniz insan türünün bazı üyeleriyle ittifaklar kurmanız gerekecek.\r\nAna Özellikler\r\nKlasik silahları ve Meteor Shower (Meteor Yağmuru) gibi yeni teknolojileri kullanarak bu hippilere patronun kim olduğunu gösterin\r\n1960\'ların dünyasını keşfedin ve güvenilir uçan dairenizle kurgusal şehirleri yerle bir edin\r\nGörevinizi baltalamak isteyenlere karşı çok daha büyük ve açık bir dünyada savunma yapın\r\nBecerilerinizi geliştirmek için farklı ülkelerden insanları toplayıp onları DNA kokteyllerine dönüştürün\r\nİki kişi oynamak için bir arkadaşınızı davet edin ve yerel 2 oyunculu bölünmüş ekran eşli oyunla tüm hikâyenin tadını çıkarın! Epic Games\'te ücreti 189₺\'dir.', 'Black Forest Games', '2022-08-30', 6.7),
+(89, 'Crown Trick', '../img/yuklemeler/crown_trick.png', 450000, 48, 'Crown Trick, sıra tabanlı dövüş ve beceri-eşya etkileşimi stratejisi ile öne çıkan, şahane animasyonlara sahip, rogue-like RPG tarzı bir macera oyudur. Düşmanları yenmek ve yer altı dünyasının gizemlerini açığa çıkarmak için elementlerde ustalaşmanın çok önemli olduğu, seninle beraber hareket eden bir labirente gir. Zindana her girişinde seni bekleyen yeni deneyimlerle bu zorlu macerada tacın verdiği gücün sana rehberlik etmesine izin ver!\r\nYöntemsel Olarak Oluşturulmuş Labirent\r\nYöntemsel olarak oluşturulan labirent, zindana her girişinde farklı bir deneyim yaşamanı sağlar. Geleneksel açık haritaların aksine, Crown Trick seni canavarlarla savaşabilmen için küçük bir zindan odasına kilitler. Tüm haritaya erişimin olmadığı için de düşmana nasıl bir saldırı gerçekleştireceğine dair stratejik olarak karar vermekten başka çaren kalmaz. 7 yaş ve üzeri için uygundur. 440₺\'dir.', 'NEXT Studios', '2020-10-10', 7.3),
+(90, 'Dead By Daylight', '../img/yuklemeler/dead_by_daylight.png', 570000, 48, 'Dead by Daylight, oyunculardan birinin acımasız bir Katil\'i ve kalan dört oyuncunun yakalanmaktan, işkence görmekten ve öldürülmekten kaçmaya çalışan Kurbanları oynadığı çok oyunculu (4\'e karşı 1) bir korku oyunudur.\r\nKurbanlar üçüncü şahıs olarak oynarlar, dolayısıyla daha iyi durumsal farkındalığa sahiplerdir. Katil ise birinci şahıs olarak oynar ve avlarına daha çok odaklanabilir.\r\nKarşılaşmalarda Kurbanların amacı, Katil\'e yakalanmadan Ölüm Alanı\'ndan kaçmak. Fakat bu kulağa geldiği kadar kolay değil, özellikle de her oynayışta ortamın değiştiği düşünülünce. 18 yaş ve üzeri için uygundur. 451₺\'dir.', 'Behaviour Interactive', '2021-12-09', 8.4),
+(92, 'League Of Legends', '../img/yuklemeler/league_of_legends.png', 156000, 49, 'Takım stratejisini bireysel ustalıkla buluşturan en çetin 5\'e 5 savaş arenası oyununda becerilerini sergile. Rolünü seç, dizilimini kusursuzlaştır ve haritanın dört bir yanında savaşarak rakibin merkezini yık. Tamamen ücretsiz. İyi olan takım kazansın. 150\'den fazla şampiyon, herkese uygun oynanış tarzı. Suikastçı olup sezdirmeden yaklaş, nişancı olup hedefine kurşun yağdır veya destek olup takım arkadaşlarına kalkan ver. Zarif kılıç ustalarından devasa canavarlara, çeşitli ve devamlı büyüyen şampiyon havuzundan istediğini seç ve oynamak istediğin gibi oyna. Ücretsiz bir oyundur.', 'Riot Games', '2021-11-04', 8.8),
+(93, 'Rocket League', '../img/yuklemeler/rocket_league.png', 960000, 49, 'Arcade tarzı futbol ve arabaların yarattığı yüksek oktanlı kaosu indir ve mücadeleye başla! Arabanı özelleştir, sahaya çık ve tüm zamanların en çok beğenilen spor oyunlarından birinde mücadele et! Hemen indir ve şutunu çek!\r\n1e1, 2ye2 ve 3e3 Çevrimiçi Modlarda tek başına veya arkadaşlarınla sahaya çık ya da Rumble, Snow Day veya Hoops gibi Ekstra Modların tadını çıkar. Rocket Pass\'teki öğeleri aç, Rekabetçi Derecelerde yüksel, Rekabetçi Turnuvalarda mücadele et, Görevleri tamamla, çapraz platform ilerlemesinin tadını çıkar ve daha fazlasını yap! Saha seni bekliyor. Şutunu çek! Ücretsiz bir oyundur.', 'Psyonix LLC', '2015-07-07', 7.9),
+(94, 'Valorant', '../img/yuklemeler/valorant.png', 200000, 49, 'DÜNYANIN DÖRT BİR YANINDA SAVAŞIN\r\n\r\nTarzınızı ve deneyiminizi harmanlayarak küresel rekabet sahnesinde boy gösterin. Keskin nişancılığınızı ve taktiksel yeteneklerinizi kullanarak saldırın ve savunun. Her turda tek bir cana sahip olduğunuz için hayatta kalmak istiyorsanız rakiplerinden daha hızlı düşünmeniz gerekir.\r\n\r\nEN GÜÇLÜ SİLAHINIZ HAYAL GÜCÜNÜZ\r\n\r\nİş silahlar ve mermilerle bitmiyor; her duruma uyum sağlayan, hızlı ve ölümcül yeteneklere sahip ajanlardan birini seçin ve kendinizi gösterebileceğiniz anları kollayın. Tüm haritalar takım stratejileri, muhteşem oyunlar ve kıran kırana geçen karşılaşmalar için özel olarak tasarlandı. Başkalarının yıllar sonra bile taklit etmeye çalışacağı performanslar gösterin. 16 yaş  ve üzeri için uygundur. Ücretsiz bir oyundur.', 'Riot Games', '2020-06-02', 7.6),
+(95, 'Unravel', '../img/yuklemeler/unravel.png', 30000, 48, 'Çevre Kuzey İskandinavya’nın nefes kesen yemyeşil ortamlarından ilham alan oyunda, doğanın güzellikleri ve içinde barındırdığı tehlikeleri arasında gezintiye çıkın.\r\nBulmacalar\r\nYarny\'nin ipliğini kullanarak çevreyle etkileşime girebilir, ağaçlar arasında sallanabilir, uçan bir uçurtmaya binebilir; kısaca istediğiniz her şeyi yapabilirsiniz. Araçlar basit olabilir, ama karmaşık bulmacaları çözme yeteneğine sahiptirler.\r\nTemel Alınan Hikaye\r\nUzun süredir kayıp bir ailenin anılarını birleştiren içten hikayeyi açın. Bu öykü hiç sözcük kullanılmadan anlatılıyor; her şeyi birbirine bağlayan şey, Yarny. 7 yaş ve üzeri için uygundur. 720₺\'dir.', 'Coldwood Interactive', '2016-02-09', 6);
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `yonetmenler`
+-- Tablo için tablo yapısı `yorumlar`
 --
 
-CREATE TABLE `yonetmenler` (
-  `yonetmen_id` int(11) NOT NULL,
-  `film_id` int(11) DEFAULT NULL,
-  `yonetmen_adi` varchar(255) DEFAULT NULL
+CREATE TABLE `yorumlar` (
+  `id` int(11) NOT NULL,
+  `oyun_id` int(11) NOT NULL,
+  `adsoyad` varchar(100) NOT NULL,
+  `yorum` text NOT NULL,
+  `yorum_tarihi` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Tablo döküm verisi `yonetmenler`
+-- Tablo döküm verisi `yorumlar`
 --
 
-INSERT INTO `yonetmenler` (`yonetmen_id`, `film_id`, `yonetmen_adi`) VALUES
-(18, 55, 'Uğur Yücel'),
-(19, 56, 'Aydın Sayman'),
-(20, 56, 'Tarkan Özel'),
-(21, 57, 'Serdar Akar'),
-(22, 58, 'Serkan Zelzele'),
-(23, 58, 'Mustafa Tuğrul'),
-(24, 59, 'İsmail Fidan'),
-(25, 60, 'Mehmet Kurtuluş'),
-(26, 60, 'Ayşe Ünal'),
-(27, 61, 'Can Ulkay'),
-(28, 62, 'Çağan Irmak'),
-(29, 63, 'Levent Semerci'),
-(30, 64, 'Yavuz Turgul'),
-(31, 65, 'Derviş Zaim'),
-(32, 66, 'Sinan Çetin'),
-(33, 67, 'Hasan Karacadağ'),
-(34, 68, 'Alper Mestçi'),
-(35, 69, 'Hasan Karacadağ'),
-(36, 70, 'Tomris Giritlioğlu'),
-(37, 71, 'Yavuz Turgul'),
-(38, 72, 'Ümit Ünal'),
-(39, 72, 'Kudret Sabancı'),
-(40, 72, 'Selim Demirdelen'),
-(41, 72, 'Ömür Atay'),
-(42, 72, 'Yücel Yolcu'),
-(43, 73, 'Ertem Eğilmez'),
-(44, 74, 'Togan Gökbakar'),
-(45, 75, 'Yılmaz Erdoğan'),
-(46, 76, 'Zeki Ökten'),
-(47, 77, 'Orhan Aksoy'),
-(48, 78, 'Kartal Tibet'),
-(49, 79, 'A. Taner Elhan'),
-(50, 80, 'Çağan Irmak'),
-(51, 81, 'Ezel Akay'),
-(52, 82, 'Sedef');
+INSERT INTO `yorumlar` (`id`, `oyun_id`, `adsoyad`, `yorum`, `yorum_tarihi`) VALUES
+(11, 94, 'Melek Aksoy', 'Çok beğendim!', '2024-06-27 13:45:18');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
 --
 
 --
--- Tablo için indeksler `basrol_oyunculari`
+-- Tablo için indeksler `admins`
 --
-ALTER TABLE `basrol_oyunculari`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `film_id` (`film_id`);
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Tablo için indeksler `filmler`
+-- Tablo için indeksler `destek_kaydi`
 --
-ALTER TABLE `filmler`
-  ADD PRIMARY KEY (`film_id`),
-  ADD KEY `kategori_id` (`kategori_id`);
-
---
--- Tablo için indeksler `iletisim`
---
-ALTER TABLE `iletisim`
+ALTER TABLE `destek_kaydi`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Tablo için indeksler `kategoriler`
 --
 ALTER TABLE `kategoriler`
-  ADD PRIMARY KEY (`kategori_id`);
-
---
--- Tablo için indeksler `kullanicilar`
---
-ALTER TABLE `kullanicilar`
   ADD PRIMARY KEY (`id`);
 
 --
--- Tablo için indeksler `yonetmenler`
+-- Tablo için indeksler `oyunlar`
 --
-ALTER TABLE `yonetmenler`
-  ADD PRIMARY KEY (`yonetmen_id`),
-  ADD KEY `film_id` (`film_id`);
+ALTER TABLE `oyunlar`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `kategori_id` (`kategori_id`);
+
+--
+-- Tablo için indeksler `yorumlar`
+--
+ALTER TABLE `yorumlar`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_oyun_yorum` (`oyun_id`);
 
 --
 -- Dökümü yapılmış tablolar için AUTO_INCREMENT değeri
 --
 
 --
--- Tablo için AUTO_INCREMENT değeri `basrol_oyunculari`
+-- Tablo için AUTO_INCREMENT değeri `admins`
 --
-ALTER TABLE `basrol_oyunculari`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
+ALTER TABLE `admins`
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Tablo için AUTO_INCREMENT değeri `filmler`
+-- Tablo için AUTO_INCREMENT değeri `destek_kaydi`
 --
-ALTER TABLE `filmler`
-  MODIFY `film_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
-
---
--- Tablo için AUTO_INCREMENT değeri `iletisim`
---
-ALTER TABLE `iletisim`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+ALTER TABLE `destek_kaydi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `kategoriler`
 --
 ALTER TABLE `kategoriler`
-  MODIFY `kategori_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
--- Tablo için AUTO_INCREMENT değeri `kullanicilar`
+-- Tablo için AUTO_INCREMENT değeri `oyunlar`
 --
-ALTER TABLE `kullanicilar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `oyunlar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
--- Tablo için AUTO_INCREMENT değeri `yonetmenler`
+-- Tablo için AUTO_INCREMENT değeri `yorumlar`
 --
-ALTER TABLE `yonetmenler`
-  MODIFY `yonetmen_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+ALTER TABLE `yorumlar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Dökümü yapılmış tablolar için kısıtlamalar
 --
 
 --
--- Tablo kısıtlamaları `basrol_oyunculari`
+-- Tablo kısıtlamaları `oyunlar`
 --
-ALTER TABLE `basrol_oyunculari`
-  ADD CONSTRAINT `basrol_oyunculari_ibfk_1` FOREIGN KEY (`film_id`) REFERENCES `filmler` (`film_id`);
+ALTER TABLE `oyunlar`
+  ADD CONSTRAINT `oyunlar_ibfk_1` FOREIGN KEY (`kategori_id`) REFERENCES `kategoriler` (`id`);
 
 --
--- Tablo kısıtlamaları `filmler`
+-- Tablo kısıtlamaları `yorumlar`
 --
-ALTER TABLE `filmler`
-  ADD CONSTRAINT `filmler_ibfk_1` FOREIGN KEY (`kategori_id`) REFERENCES `kategoriler` (`kategori_id`);
-
---
--- Tablo kısıtlamaları `yonetmenler`
---
-ALTER TABLE `yonetmenler`
-  ADD CONSTRAINT `yonetmenler_ibfk_1` FOREIGN KEY (`film_id`) REFERENCES `filmler` (`film_id`);
+ALTER TABLE `yorumlar`
+  ADD CONSTRAINT `fk_oyun_yorum` FOREIGN KEY (`oyun_id`) REFERENCES `oyunlar` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
